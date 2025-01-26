@@ -81,11 +81,26 @@ function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
     if (isCorrect) {
-        selectedBtn.classList.add("correct");
+      selectedBtn.classList.add("correct");
+      score++; // Update score if the answer is correct
     } else {
-        selectedBtn.classList.add("incorrect");
+      selectedBtn.classList.add("incorrect");
     }
+    // Enable the next button after an answer is selected
     nextButton.style.display = "block";
-}
+  }
+  nextButton.addEventListener("click", () => {
+    currentQuestionIndex++; 
+  
+    if (currentQuestionIndex < question.length) {
+      showQuestion(); 
+    } else {
+      // End of quiz 
+      questionElement.innerHTML = `You scored ${score} out of ${question.length}!`;
+      answerButton.innerHTML = ""; 
+      nextButton.style.display = "none"; 
+    }
+  });
+
 startquiz();
 });
