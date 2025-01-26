@@ -6,23 +6,23 @@
 }
 
 body{
-    background: #FFFACD (Lemon Chiffon);
+    background: #efef8f (Lemon Chiffon);
     font-family: "Inter";
 }
 
 .app{
-    background:#fff;
+    background:#f0f020;
     width:50%;
     max-width:600px;
     margin:100px auto 0;
     border-radius: 10px;
     padding:30px;
 }
-.app h1{
+.app h2{
     font-weight:21px;
-    color:#001e4d;
+    color:#000000;
     font-weight:600;
-    border-bottom:1px solid #fff;
+    border-bottom:1px solid #ffffffe2;
     padding-bottom:30px;
 }
 .quiz{
@@ -31,15 +31,15 @@ body{
 }
 .quiz h2{
     font-size:10px;
-    color:#001e4d;
+    color:#000000;
     font-weight:600;
 }
 .btn{
-    background:#eee;
-    color:#333;
+    background:#f0f05f;
+    border:1px solid #222;
+    color:#000000;
     font-weight:300;
     width: 100%;
-    border: 0;
     padding:10px;
     margin:10px 0;
     text-align:left;
@@ -72,7 +72,7 @@ body{
     font-size: 24px;
 }
 .correct{
-    background:#28a745;
+    background:#23ef53;
     color:#fff;
     font-weight:500;
     width:100%;
@@ -84,7 +84,7 @@ body{
     cursor:pointer;
 }
 .incorrect{
-    background:#dc3545;
+    background:hsl(354, 84%, 53%);
     color:#fff;
     font-weight:500;
     width:100%;
