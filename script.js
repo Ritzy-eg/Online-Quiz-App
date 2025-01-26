@@ -1,7 +1,8 @@
+document.addEventListener("DOMContentLoaded", (event) => {
 const question = [
     {
         question:"what has hands but cant clap?",
-        Answers:[
+        answers:[
             {text:"Clock",correct:true},
             {text:"Monkey",correct:false},
             {text:"statue",correct:false},
@@ -41,45 +42,50 @@ const question = [
  }
 ];
 const questionElement=document.getElementById('question');
-const answerButton=document.getElementbyId('answer-buttons');
+const answerButton=document.getElementById('answer-buttons');
 const nextButton=document.getElementById('next-btn');
 let currentQuestionIndex=0;
 let score=0;
-function startquiz(){
+function startquiz() {
     currentQuestionIndex=0;
     score=0;
     nextButton.innerHTML="Next";
     showQuestion();
 }
-function showQuestion(){
-    let currentQuestion=questions[currentQuestionIndex];
-    let questions=currentQuestionIndex+1;
-    questionElement.innnerHTML=questionNo +"."+currentQuestion.question;
-currentQuestion.answers.forEach(answers=> {
-    const button = document.createElement("button");
-    button.innerHTML = answers.text;
-    button.classList.add("btn");
-    answerbutton.appendChild(button);
-    if (answers.correct){
-        button.dataset.correct=answers.correct;
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = question[currentQuestionIndex];
+    let questionNo = currentQuestionIndex + 1;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        answerButton.appendChild(button);
+        if (answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+    });
+}
+
+function resetState() {
+    nextButton.style.display = "none";
+    while (answerButton.firstChild) {
+        answerButton.removeChild(answerButton.firstChild);
     }
-    button.addEventListener("click",selectAnswer);
+}
+
+function selectAnswer(e) {
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if (isCorrect) {
+        selectedBtn.classList.add("correct");
+    } else {
+        selectedBtn.classList.add("incorrect");
+    }
+    nextButton.style.display = "block";
+}
+startquiz();
 });
-}
-
-
-function resetState(){
-nextbutton.style.display="none";
-while(answerButtons.firstChild){
-answerButtons.removeChild(answerButtons)
-}
-}
-
-function selectAnswer(e){
-const selectedBtn=e.target;
-const isCorrect=selectedBtn.dataset.correct==="true";
-if(isCorrect){
-selectedBtn.classList.add("correct");
-}else{
-    selectedBtn.classList.add("Incorrect");}
-}

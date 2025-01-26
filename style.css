@@ -45,7 +45,7 @@ body{
     cursor:pointer;
     transition:all 0.3s;
 }
-.btn:hovernot([disabled]{
+.btn:hovernot([disabled]){
     background:#222;
     color:#fff;
 }
